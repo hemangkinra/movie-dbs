@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h1>Movies List</h1>
+    <a href="{% url 'movies' %}?q=srtt">Sort by Title</a>
+    <a href="{% url 'movies' %}?q=srdt">Sort by Date</a>
+</div>
+<hr>
+{% for movie,actor in movies %}
+<div style="text-align: center;">
+    <h2>{{movie.title}}</h2>
+    <p>{{movie.release_date}}</p>
+    <form action="/votes/{{movie.id}}/" method="POST">
+        {% csrf_token %}
+        <input type="submit" name="upvote" value="Upvotes - {{movie.upvote}}" />
+        <input type="submit" name="downvote" value="Downvotes - {{movie.downvote}}" />
+    </form>
+    <ul>
+        {% for acr in actor %}
+        <li>{{acr.actor}}</li>
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+{% endfor %}
+
+
+{% endblock content %}

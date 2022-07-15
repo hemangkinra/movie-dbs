@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Home</h1>
+<hr>
+<a href="{% url 'movies' %}">
+    <h1 style="text-align: center;">Movies</h1>
+</a>
+<hr>
+<a href="{% url 'actors' %}">
+    <h1 style="text-align: center;">Actors</h1>
+</a>
+<hr>
+
+
+
+{% endblock content %}

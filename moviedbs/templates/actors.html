@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Actor List</h1>
+<hr>
+{% for actor,movie in actors %}
+<div style="text-align: center;">
+    <h2>{{actor.name}}</h2>
+    <p>{{actor.date_of_birth}}</p>
+    <p>Total Movies - {{movie|length}}</p>
+    <ul>
+        {% for mv in movie %}
+        <li>
+            {{mv.movie}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock content %}
